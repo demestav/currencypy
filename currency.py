@@ -8,24 +8,36 @@ import time
 import requests
 
 # begin wxGlade: extracode
-EUR_USD = 1
-EUR_GBP = 1
-USD_GBP = 1
+# load values from last update
+config={}
+execfile("rates.conf",config)
+EUR_USD = config["EUR_USD"]
+EUR_GBP = config["EUR_GBP"]
+USD_GBP = config["USD_GBP"]
 def myfunc(i):
     global EUR_USD
     global EUR_GBP
     global USD_GBP
     url = 'http://rate-exchange.appspot.com/currency?from=EUR&to=USD&q=1'
     r = requests.get(url)
-    EUR_USD = r.json()['v']
+    try:
+        EUR_USD = r.json()['v']
+    except:
+        print "Error!"
     time.sleep(2)
     url = 'http://rate-exchange.appspot.com/currency?from=EUR&to=GBP&q=1'
     r = requests.get(url)
-    EUR_GBP = r.json()['v']
+    try:
+        EUR_GBP = r.json()['v']
+    except:
+        print "Error!"
     time.sleep(2)
     url = 'http://rate-exchange.appspot.com/currency?from=USD&to=GBP&q=1'
     r = requests.get(url)
-    USD_GBP = r.json()['v']
+    try:
+        USD_GBP = r.json()['v']
+    except:
+        print "Error!"
 
 t = Thread(target=myfunc,args=(1,))
 t.start()
