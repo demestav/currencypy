@@ -85,18 +85,18 @@ class MyFrame1(wx.Frame):
 
     def eh_EUR(self, event):  # wxGlade: MyFrame1.<event_handler>
         if self.tc_EUR.GetValue() != '':
-            self.tc_USD.ChangeValue(str(float(self.tc_EUR.GetValue())*EUR_USD))
-            self.tc_GBP.ChangeValue(str(float(self.tc_EUR.GetValue())*EUR_GBP))
+            self.tc_USD.ChangeValue(str(round(float(self.tc_EUR.GetValue())*EUR_USD,2)))
+            self.tc_GBP.ChangeValue(str(round(float(self.tc_EUR.GetValue())*EUR_GBP,2)))
             event.Skip()
     def eh_USD(self, event):  # wxGlade: MyFrame1.<event_handler>
         if self.tc_USD.GetValue() != '':
-            self.tc_EUR.ChangeValue(str(float(self.tc_USD.GetValue())/EUR_USD))
-            self.tc_GBP.ChangeValue(str(float(self.tc_USD.GetValue())*USD_GBP))
+            self.tc_EUR.ChangeValue(str(round(float(self.tc_USD.GetValue())/EUR_USD,2)))
+            self.tc_GBP.ChangeValue(str(round(float(self.tc_USD.GetValue())*USD_GBP,2)))
             event.Skip()
     def eh_GBP(self, event):  # wxGlade: MyFrame1.<event_handler>
         if self.tc_GBP.GetValue() != '':
-            self.tc_EUR.ChangeValue(str(float(self.tc_GBP.GetValue())/EUR_GBP))
-            self.tc_USD.ChangeValue(str(float(self.tc_GBP.GetValue())/USD_GBP))
+            self.tc_EUR.ChangeValue(str(round(float(self.tc_GBP.GetValue())/EUR_GBP,2)))
+            self.tc_USD.ChangeValue(str(round(float(self.tc_GBP.GetValue())/USD_GBP,2)))
             event.Skip()
 # end of class MyFrame1
 if __name__ == "__main__":
